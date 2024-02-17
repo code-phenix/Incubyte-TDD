@@ -1,8 +1,5 @@
 package src;
 
-import javax.swing.*;
-import java.security.spec.ECFieldF2m;
-
 public class Calculator {
 
     //base case
@@ -28,8 +25,9 @@ public class Calculator {
 //The following input is valid: "1\n2,3" (will return 6)
 //    The following input is invalid: "1,\n"
 
+            //support for ";" delimmitter
 
-            String num[] = number.split("[\n,]");
+            String num[] = number.split("[\n,;]");
 //        we can use the multiple Delimetter Also , like [,?//n?/n]
 
             //case 1:

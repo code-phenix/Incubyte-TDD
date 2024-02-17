@@ -64,7 +64,7 @@ public class StringCalTDD {
 
 //        inp:1\n2,3 out = 6
 
-        System.out.println(calculator.add("1\\n2,3"));
+        System.out.println(calculator.add("1\\n2,3;4"));
 
 
 
