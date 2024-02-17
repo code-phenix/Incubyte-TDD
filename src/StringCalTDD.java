@@ -32,7 +32,14 @@ public class StringCalTDD {
 
 //    If there are multiple negative numbers, show all of them in the exception message, separated by commas
 
-    public static void main(String[] args) {
 
+
+    public static void main(String[] args) {
+        Calculator calculator=new Calculator();
+//        testing with the base Cases
+        System.out.println(calculator.add(""));
+        System.out.println(calculator.add("1"));
+        System.out.println(calculator.add("1,5"));
     }
 }
+
