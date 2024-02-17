@@ -27,46 +27,61 @@ public class Calculator {
 
             //support for ";" delimmitter
 
-            String num[] = number.split("[\n,;]");
+            String num[] = number.split("[,?;]");
 //        we can use the multiple Delimetter Also , like [,?//n?/n]
 
             //case 1:
             //if input has one number (ie) input : "1" output: 1
-            if (num.length == 1)
+            if (num.length == 1) {
+                if(Integer.parseInt(num[0])<0){
+                    throw new Exception("Negative Number are not Allowed"+String.valueOf(Integer.parseInt(num[0])));
+                }
                 return Integer.parseInt(num[0]);
+            }
 
             for (String iter : num) {
+
                 if (iter.contains("\\n") || iter.contains("\n")) {
                     String temp[] = iter.split("\\\\n");
                     for (String tempNumber : temp) {
                         if (tempNumber.isEmpty()) {
-                            throw new InvalidInput();
+                            throw new Exception("Invalid Input");
                         }
                         sum += Integer.parseInt(tempNumber);
                     }
                     continue;
+                }
+                if(Integer.parseInt(iter)<0){
+                    throw new Exception("Negative Number are not Allowed"+String.valueOf(Integer.parseInt(iter)));
                 }
                 sum += Integer.parseInt(iter);
             }
 
             return sum;
 
-        } catch (NumberFormatException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e){
+            System.out.println(e);
         }
-        catch (InvalidInput e){
-            //case for the invalid Input
-        }
-        finally {
-            return sum;
-        }
+    return sum;
     }
 
 }
 
-class InvalidInput extends Exception {
-    @Override
-    public String toString() {
-        return "Invalid Input";
-    }
-}
+//class InvalidInput extends Exception {
+//    @Override
+//    public String toString() {
+//        return "Invalid Input";
+//    }
+//}
+//
+//class NegativeNumberException extends Exception{
+//
+//    int num;
+//    NegativeNumberException(int num){
+//        this.num=num;
+//    }
+//    public String toString(){
+//        return  "Negative number are Not Allowed"+ num;
+//    }
+//
+//}
