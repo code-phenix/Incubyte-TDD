@@ -1,5 +1,7 @@
 package src;
 
+import java.util.ArrayList;
+
 public class StringCalTDD {
 
 
@@ -37,9 +39,29 @@ public class StringCalTDD {
     public static void main(String[] args) {
         Calculator calculator=new Calculator();
 //        testing with the base Cases
-        System.out.println(calculator.add(""));
-        System.out.println(calculator.add("1"));
-        System.out.println(calculator.add("1,5"));
+//        input is String
+//        System.out.println(calculator.add(""));
+//        System.out.println(calculator.add("1"));
+//        System.out.println(calculator.add("1,5"));
+
+//        If input is String Array
+//         input => "", "1", "1,5" ;  Output : 0, 1, 6
+        String numsArray[]={"","1","1,5"};
+        //for storing purpose used ArrayList for Dynamic Case
+        ArrayList<Integer> result=new ArrayList<>();
+        for(String iter:numsArray){
+            result.add(calculator.add(iter));
+        }
+//        printing the Answer for the String Array Cases
+        for(int iter=0;iter<result.size();iter++){
+            if(iter==result.size()-1)
+                System.out.print(result.get(iter));
+            else
+                System.out.print(result.get(iter)+", ");
+
+        }
+
+
     }
 }
 
