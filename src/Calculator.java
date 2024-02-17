@@ -17,7 +17,14 @@ public class Calculator {
 
     //solving one or more integer in a String.
         //split the String with the comma as delimmitter
-        String num[]=number.split(",");
+
+        //Allow the add method to handle new lines between numbers (instead of commas).
+//The following input is valid: "1\n2,3" (will return 6)
+//    The following input is invalid: "1,\n"
+
+
+        String num[]=number.split("[\n,]");
+//        we can use the multiple Delimetter Also , like [,?//n?/n]
         //variable for storing the sum of values in String
         int sum=0;
         //case 1:
@@ -26,6 +33,13 @@ public class Calculator {
                 return Integer.parseInt(num[0]);
 
             for(String iter:num){
+                if( iter.contains("\\n") || iter.contains("\n")){
+                    String temp[]=iter.split("\\\\n");
+                    for(String tempNumber:temp){
+                        sum+=Integer.parseInt(tempNumber);
+                    }
+                    continue;
+                }
                 sum+=Integer.parseInt(iter);
             }
 
